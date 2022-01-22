@@ -9,8 +9,14 @@ class Main {
      list.addLast(10);
      list.addLast(20);
      list.addLast(30);
-     
-    System.out.println(list.indexOf(20));
+
+     list.addFirst(9);
+    //  System.out.println(list.contains(9));
+
+    //  list.removeFirst();
+
+    list.removeLast();
+    // System.out.println(list.size());
     
   }
 }
@@ -27,7 +33,7 @@ class LinkedList{
       }
   }
   
-  
+  private int size = 0 ; 
   private Node first ; 
   private Node last ; 
   
@@ -42,7 +48,7 @@ class LinkedList{
       last.next = node ; 
       last = node ; 
       }
-
+      size++;
   } 
   
   
@@ -54,6 +60,8 @@ class LinkedList{
           node.next = first;
           first = node ; 
       }
+
+      size++;
   }
   
   public int indexOf(int item){
@@ -67,8 +75,57 @@ class LinkedList{
       return -1 ;
   }
   
+  
+  //remote first 
+  public void removeFirst(){
+    
+    first = first.next ; 
+    size--;
+    
+  }
+  
+  
+  //remove last 
+  public void removeLast(){
+    
+    int index = 0 ;
+    var current  = first ;
+    int lastIndex =  indexOf(last.value);
+    
+    while(current != null){
+      
+      if(index == (lastIndex-1)){
+        last = current ; 
+        last.next = null;
+        break;
+      }
+      
+      current = current.next; 
+      index++;
+      
+    }    
+    size--;
+  }
+  
+  //contain
+  public boolean contains(int item){
+    return indexOf(item) != -1;
+  }
+  
+  public int size(){
+    return size;
+  }
+
+
+  //implementation detail
   private boolean isEmpty(){
       return first == null; 
+  }
+
+
+
+  public void reverse(){
+
   }
   
 }
