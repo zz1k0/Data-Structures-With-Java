@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 // Online Java Compiler
@@ -19,6 +20,10 @@ class Main {
 
     list.removeLastV2();
    System.out.println(list.size());
+
+    var arr = list.toArray();
+
+    System.out.println(Arrays.toString(arr));
 
   }
 }
@@ -160,6 +165,22 @@ class LinkedList {
       current = current.next;
     }
     return null;
+  }
+
+
+  public int[] toArray(){
+    var current = first ; 
+    int index = 0 ; 
+    int[] array = new int[size()];
+    while(current != null){
+       
+         array[index] = current.value ; 
+      current = current.next ; 
+      
+       index++;
+
+    }
+    return array; 
   }
 
 }
